@@ -1,0 +1,165 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px; /* Increased width */
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px; /* Increased padding */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #008000;
+  margin-bottom: 10px;
+  font-size: 28px; /* Larger font size */
+  font-weight: bold;
+}
+
+h3 {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 20px;
+  font-size: 18px; /* Larger font size */
+}
+
+.tabs {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  text-align: center; /* Center align the tabs */
+}
+
+.tablinks {
+  background-color: #4CAF50; /* Match button color */
+  color: white; /* Text color */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 20px; /* Increased padding */
+  transition: background-color 0.3s;
+  border-radius: 8px 8px 0 0; /* Rounded corners on top */
+  font-weight: bold; /* Bold text */
+}
+
+.tablinks:hover {
+  background-color: #45a049; /* Darker shade on hover */
+}
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border-top: none;
+}
+
+#encode {
+  display: block;
+}
+
+textarea {
+  width: calc(100% - 22px); /* Adjusting for padding and border */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Add space between buttons */
+}
+
+button:last-child {
+  margin-right: 0; /* Remove margin from last button */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.result h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Hover effect for reset button */
+button.reset:hover {
+  background-color: #f44336;
+}
+
+/* Tab content animation */
+.tabcontent {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result {
+  margin-top: 20px;
+  padding: 1px;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+}
+
+.result h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.result p {
+  white-space: pre-line; /* Preserve line breaks */
+  text-align: center;
+}
+
+.otp-highlight {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Position the icon button at the end of the line */
+.otp-highlight .copy-button {
+  margin-left: 50%;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+}

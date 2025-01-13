@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Image Steganography</h1>
+  <h3>A secret way of sharing messages</h3>
+
+  <div class="tabs">
+    <button class="tablinks" (click)="openTab('encode')">Encode</button>
+    <button class="tablinks" (click)="openTab('decode')">Decode</button>
+  </div>
+
+  <div *ngIf="activeTab === 'encode'">
+    <h2>Encode</h2>
+    <input type="file" id="encodeImageInput" (change)="onEncodeImageSelected($event)" accept="image/*"><br>
+
+    <textarea [(ngModel)]="encodeText" placeholder="Enter text to encode"></textarea><br>
+    
+    <div class="button-group">
+      <button (click)="encode()">Encode</button>
+      <button (click)="reset('encode')">Reset</button>
+    </div>
+
+    <div class="otp-section" *ngIf="otp">
+      <div class="otp-highlight">
+        <p>OTP: {{ otp }}</p>
+        <button class="copy-button" (click)="copyToClipboard()">Copy OTP</button>
+      </div>
+    </div>
+    
+    <div *ngIf="encodeSuccess" class="success-message">
+      <p>Your message is secure - Share the Image - Use OTP to decrypt.</p>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'decode'">
+    <h2>Decode</h2>
+    <input type="file" id="decodeInput" (change)="onDecodeImageSelected($event)" accept="image/*"><br>
+    <div class="button-group">
+      <button (click)="decode()">Decode</button>
+      <button (click)="reset('decode')">Reset</button>
+    </div>
+    <div *ngIf="decodeSuccess" class="success-message">
+      <p>Decoding successful.</p>
+    </div>
+    <div *ngIf="decodedText" class="result">
+      <h3>Decoded Text:</h3>
+      <p>{{ decodedText }}</p>
+    </div>
+  </div>
+</div>

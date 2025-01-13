@@ -1,0 +1,19 @@
+<div class="email-verification-container">
+  <h2>Verify Your Email</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Enter your email">
+      <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Enter your password">
+      <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</div>

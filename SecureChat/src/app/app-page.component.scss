@@ -1,0 +1,19 @@
+mat-toolbar {
+  justify-content: space-between;
+  color:white;
+  background-color:black !important;
+  
+}
+h1{
+  color:white;
+}
+.profile-image-toolbar {
+  border-radius: 100%;
+  margin-right: 9px;
+}
+.content {
+  background-image: url("../assets/images/ksu.jpg");
+  background-size: cover;
+  height: 100%;
+  max-width: 100%;
+}

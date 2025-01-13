@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="chat-list mat-elevation-z5">
+    <div class="search-input">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Search for users and start a chat"
+          [matAutocomplete]="users"
+          [formControl]="searchMessage"
+        />
+      </mat-form-field>
+      <mat-autocomplete #users="matAutocomplete">
+        <mat-option
+          *ngFor="let user of users$ | async"
+          [value]="''"
+          (click)="createChat(user)"
+        >
+          {{ user.displayName }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <mat-selection-list [multiple]="false" [formControl]="chatListControl">
+      <mat-divider></mat-divider>
+      <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
+        <img
+          matListAvatar
+          [src]="
+            chat.chatPic ? chat.chatPic : 'assets/images/profico.png'
+          "
+          alt="Profile_pic"
+        />
+        <p mat-line class="chat-title">
+          <span class="chat-name">{{ chat.chatName }}</span
+          ><span class="chat-date">{{
+            chat.lastMessageDate | dateDisplay
+          }}</span>
+        </p>
+        <p mat-line>{{ getDecryptedMessage(chat.lastMessage) }}</p>
+        <mat-divider></mat-divider>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="messages mat-elevation-z5">
+    <div
+      class="messages-header"
+      *ngIf="selectedChat$ | async as selectedChat; else noChatSelected"
+    >
+      <img
+        [src]="
+          selectedChat.chatPic
+            ? selectedChat.chatPic
+            : 'assets/images/profico.png'
+        "
+      />
+      <h2>{{ selectedChat.chatName }}</h2>
+      <div class="search-chat">
+        <mat-form-field>
+        <input
+          matInput
+          placeholder="Search a chat message"
+          message.chat
+          [formControl]="searchControl"
+        />
+      </mat-form-field>
+      </div>
+      
+    </div>
+    <ng-template #noChatSelected>
+      <h2>Messages</h2>
+    </ng-template>
+    <mat-divider></mat-divider>    
+    <div class="chat-area">
+      <ng-container *ngIf="user$ | async as currentUser">
+        <ng-container *ngIf="messages$ | async as messages">
+          <div
+            class="chat-bubble-container"
+            [ngClass]="{ sender: message.senderId === currentUser.uid }"
+            *ngFor="let message of messages"
+            
+          >
+          
+            <div class="chat-bubble">
+              {{ getDecryptedMessage(message.text) }}
+              <span class="chat-time">{{
+                message.sentDate | dateDisplay
+              }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div #endOfChat></div>
+    </div>
+    
+    <div class="input-area">
+      <!--<div class="photo">
+        <input #inputField type="file" />
+      </div>
+      <div class="photo">
+        <input #inputField type="file" (change)="onFileSelected($event)" style="display: none;" />
+        <button mat-icon-button (click)="inputField.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>-->
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          placeholder="Enter your message..."
+          [formControl]="messageControl"
+          (keydown.enter)="sendMessage()"
+        />
+        <button mat-icon-button matSuffix (click)="sendMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-form-field>
+      <a routerLink="/is" target="_blank" class="IsButton" title="Want to Send a secret message? Try this">Hide your text</a>
+    </div>
+  </div>
+</div>
