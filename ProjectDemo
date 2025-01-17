@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Video</title>
+    <style>
+        body {
+            background-color: #003136;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+			font-weight: 200px;			
+        }
+        video {
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <p>A Demo to run the <em><b>Secure Chat</b></em> Web Application</p>
+        <video id="myVideo" controls width="900">
+            <source src="CapstoneProjectDemo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = 15; // Set the start time to 1 minute (60 seconds)
+        });
+    </script>
+</body>
+</html>
